@@ -7,12 +7,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Enumeration;
 
 @WebServlet(name = "requestHeaderServlet", urlPatterns = "/request-header")
 public class RequestHeaderServlet extends HttpServlet {
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void service(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
         printStartLine(request);
         printHeaders(request);
@@ -68,7 +68,7 @@ public class RequestHeaderServlet extends HttpServlet {
 //        }
         // iterator 사용한 출력 방식
         request.getHeaderNames().asIterator()
-                        .forEachRemaining(headerName -> System.out.println(headerName + ": " + headerName));
+                .forEachRemaining(headerName -> System.out.println(headerName + ": " + headerName));
 
         System.out.println("test?");
         // header 의 특정 정보만 알고싶을 경우
@@ -101,10 +101,10 @@ public class RequestHeaderServlet extends HttpServlet {
         System.out.println();
 
         /*
-        * null로 조회되는 이유?
-        * GET 방식은 단순 조회. body쪽에 담기는게 없음.
-        * POSTMAN을 통해 POST로 쏴서 확인 가능!
-        * */
+         * null로 조회되는 이유?
+         * GET 방식은 단순 조회. body쪽에 담기는게 없음.
+         * POSTMAN을 통해 POST로 쏴서 확인 가능!
+         * */
         System.out.println("[Content 편의 조회]");
         System.out.println("request.getContentType() = " + request.getContentType());
         System.out.println("request.getContentLength() = " + request.getContentLength());
