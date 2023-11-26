@@ -22,7 +22,7 @@ public class MvcMemberListServlet extends HttpServlet {
         List<Member> members = memberRepository.findAll();
 
         request.setAttribute("members", members);
-        String viewPath = "/WEB-INF/vies/members.jsp";
+        String viewPath = "/WEB-INF/views/members.jsp";
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath);
         dispatcher.forward(request, response);
