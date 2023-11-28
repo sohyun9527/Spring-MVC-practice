@@ -32,7 +32,7 @@ public class MyView {
 
     }
 
-    private static void modelToRequestAttribute(Map<String, Object> model, HttpServletRequest request) {
+    private void modelToRequestAttribute(Map<String, Object> model, HttpServletRequest request) {
         model.forEach(request::setAttribute);
     }
 }
