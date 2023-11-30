@@ -10,15 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class SpringMemberFormControllerV2 {
+@RequestMapping("/springmvc/v2/members") // 중복을 제거할 수 있군아!
+public class SpringMemberControllerV2 {
     private MemberRepository memberRepository = MemberRepository.getInstance();
 
-    @RequestMapping("/springmvc/v2/members/new-form")
+    @RequestMapping("/new-form")
     public ModelAndView newForm() {
         return new ModelAndView("new-form");
     }
 
-    @RequestMapping("/springmvc/v2/members/save")
+    @RequestMapping("/save")
     public ModelAndView save(HttpServletRequest request, HttpServletResponse response) {
         String username = request.getParameter("username");
         int age = Integer.parseInt(request.getParameter("age"));
@@ -32,7 +33,7 @@ public class SpringMemberFormControllerV2 {
         return mv;
     }
 
-    @RequestMapping("/springmvc/v2/members")
+    @RequestMapping
     public ModelAndView members() {
         List<Member> members = memberRepository.findAll();
         ModelAndView mv = new ModelAndView("members");
